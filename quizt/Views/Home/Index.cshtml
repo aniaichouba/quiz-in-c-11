@@ -1,0 +1,45 @@
+﻿<div class="text-center">
+    <h3>Online Exam Project</h3>
+</div>
+@foreach (var item in Model)
+{
+    <table class="table">
+        <tr>
+            <td>@item.Qid ) @item.Question ?</td>
+        </tr>
+        <tr>
+            <td>
+                <input id="option1" type="radio" name="@item.Qid" class="rb" value="@item.option1">@item.option1
+                <input id="option2" type="radio" name="@item.Qid" class="rb" value="@item.option2">@item.option2
+                <input id="option3" type="radio" name="@item.Qid" class="rb" value="@item.option3">@item.option3
+                <input id="option4" type="radio" name="@item.Qid" class="rb" value="@item.option4">@item.option4
+                <label name="@item.Qid" class="rb" style="display:none; color:forestgreen; font:bold;">@item.Correctans</label>
+            </td>
+        </tr>
+    </table>
+}
+<button id="but1" type="button" value="Submit" class="btn-success" onclick="displayresults();">Submite</button>
+<label id="ldluserranswer"></label>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+        $("#but1").click(function()
+        {
+            $(".rb").show();
+            $(".rb").attr("disabled",true);
+        });
+    });
+
+    function displayresults(){
+        document.getElementById("ldluserranswer").innerHTML ="";
+        var result = document.getElementsByTagName('input');
+        for(i=0;i<result.length;i++){
+            if (result[i].type == "radio"){
+                if(result[i].checked){
+                    document.getElementById("ldluserranswer").innerHTML += "Q "+ result[i].name +")"+"Your Selected Answer Is : "+ result[i].value + "<br/>";
+                }
+            }
+        }
+    }
+</script>

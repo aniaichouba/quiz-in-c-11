@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="text-center">
+    <h3>Online Exam Project</h3>
+</div>
+@foreach (var item in Model.displayresults)
+{
+    <table class="table">
+        <tr>
+            <td>@item.Qid ) @item.Question ?</td>
+        </tr>
+        <tr>
+            <td>
+                <input id="option1" type="radio" name="@item.Qid" class="rb" value="@item.option1">@item.option1
+                <input id="option2" type="radio" name="@item.Qid" class="rb" value="@item.option2">@item.option2
+                <input id="option3" type="radio" name="@item.Qid" class="rb" value="@item.option3">@item.option3
+                <input id="option4" type="radio" name="@item.Qid" class="rb" value="@item.option4">@item.option4
+                <label name="@item.Qid" class="rb">@item.Correctans</label>
+            </td>
+        </tr>
+    </table>
+}
+<button id="but1" type="button" value="Submit" class="btn-success">Submite</button>
